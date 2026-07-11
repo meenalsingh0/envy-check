@@ -1,0 +1,38 @@
+# Dogfooding workflow: runs Envy on its own repository.
+# This doubles as a working usage example — in your own repo you would replace
+# `uses: ./` with `uses: OWNER/envy-check@v1` and drop the build steps.
+name: Envy self-check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write # needed to post/update the PR comment
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Only needed because we run the action from source; consumers of the
+      # published action skip these two steps.
+      - run: npm ci
+      - run: npm run build
+
+      - name: Run Envy on this repo
+        uses: ./
+        with:
+          path: .
+          # Our test fixtures contain deliberately fabricated secrets, so a
+          # risky finding here is expected and must not fail the build.
+          fail-on-risky: 'false'
+          fail-on-missing: 'false'

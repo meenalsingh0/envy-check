@@ -1,0 +1,30 @@
+name: 'Envy Check'
+description: >-
+  Detect missing, unused, and leaked environment variables in JS/TS repos and
+  report the results as a pull-request comment.
+author: 'The envy-check contributors'
+branding:
+  icon: 'eye'
+  color: 'green'
+
+inputs:
+  path:
+    description: 'Directory to scan, relative to the workspace root.'
+    required: false
+    default: '.'
+  fail-on-risky:
+    description: 'Fail the check when potential committed secrets are found.'
+    required: false
+    default: 'true'
+  fail-on-missing:
+    description: 'Fail the check when variables are used in code but declared in no .env file.'
+    required: false
+    default: 'false'
+  github-token:
+    description: 'Token used to post/update the PR comment. Defaults to the workflow token.'
+    required: false
+    default: ${{ github.token }}
+
+runs:
+  using: 'node20'
+  main: 'dist/action/index.cjs'

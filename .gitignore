@@ -1,0 +1,20 @@
+node_modules/
+coverage/
+
+# Build output is not committed — except the bundled GitHub Action, which
+# must be checked in so `uses: OWNER/envy-check@v1` works without a build.
+dist/*
+!dist/action/
+
+# Local env files — never commit real secrets
+.env
+.env.local
+.env.*.local
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+
+npm-debug.log*
+.claude/
