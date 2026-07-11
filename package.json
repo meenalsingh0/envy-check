@@ -1,6 +1,6 @@
 {
   "name": "envy-check",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scan JS/TS codebases for undeclared, unused, and leaked environment variables",
   "keywords": [
     "env",
