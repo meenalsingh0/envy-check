@@ -114,7 +114,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: OWNER/envy-check@v1
+      - uses: meenalsingh0/envy-check@v1
         with:
           path: . # directory to scan (default '.')
           fail-on-risky: 'true' # fail the check on potential secrets (default true)
