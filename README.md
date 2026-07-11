@@ -1,5 +1,6 @@
 # envy-check
 
+
 [![npm version](https://img.shields.io/npm/v/envy-check)](https://www.npmjs.com/package/envy-check)
 [![npm downloads](https://img.shields.io/npm/dw/envy-check)](https://www.npmjs.com/package/envy-check)
 [![license](https://img.shields.io/npm/l/envy-check)](LICENSE)
